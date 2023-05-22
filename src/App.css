@@ -36,3 +36,66 @@
     transform: rotate(360deg);
   }
 }
+
+.info {
+  font-size:smaller;
+}
+
+#Mapp {
+  border-style: double;
+  border-width: 15px;
+  border-color: rgb(153, 6, 30);
+}
+
+.text {
+  font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+#coor {
+  /* border-style: solid;
+  border-color: rgb(255, 255, 255); */
+  border-width: 7px;
+  display: flex;
+  justify-content:space-evenly;
+}
+
+/* #long{
+border-style: solid;
+}
+
+#lati{
+  border-style: solid;
+} */
+
+img{
+  width: 900px;
+  height: 800px;
+}
+
+button{
+  border-color:rgb(255, 255, 255);
+  background-color: #000000;
+  color: white;
+  margin-left: 10px;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  border-style:solid;
+}
+
+#searchbar {
+  border-color:rgb(255, 255, 255);
+  background-color: #000000;
+  color: white;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  width: 15%;
+}
+
+#title {
+  font-weight: bold;
+  font-size: larger;
+  font-style: italic;
+  color:  rgb(153, 6, 30);
+  white-space: nowrap; /* Prevent line breaks */
+  overflow: hidden; /* Hide overflowing content */
+  text-overflow: ellipsis;
+  -webkit-text-stroke: 1px rgb(255, 255, 255); /* width and color */
+}
