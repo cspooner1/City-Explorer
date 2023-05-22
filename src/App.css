@@ -14,7 +14,8 @@
 }
 
 .App-header {
-  background-color: #000000;
+  background-image: url('./R.jpg');
+  background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -44,7 +45,7 @@
 #Mapp {
   border-style: double;
   border-width: 15px;
-  border-color: rgb(153, 6, 30);
+  border-color: rgb(255, 255, 255);
 }
 
 .text {
@@ -93,7 +94,7 @@ button{
   font-weight: bold;
   font-size:xx-large;
   font-style: italic;
-  color:  rgb(153, 6, 30);
+  color:  rgb(15, 187, 173);
   white-space: nowrap; /* Prevent line breaks */
   overflow: hidden; /* Hide overflowing content */
   text-overflow: ellipsis;
