@@ -91,7 +91,7 @@ button{
 
 #title {
   font-weight: bold;
-  font-size: larger;
+  font-size:xx-large;
   font-style: italic;
   color:  rgb(153, 6, 30);
   white-space: nowrap; /* Prevent line breaks */

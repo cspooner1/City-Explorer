@@ -10,15 +10,21 @@ import axios from 'axios';
 import {useState} from 'react';
 import Col from 'react-bootstrap/Col';
 import './App.css';
+import Error from './Error';
 
 function ExploreForm() {
     const [userinput, setUserInput] = useState("");
     const [image, setImage] = useState("");
+    const [errorMessage, setErrorMessage] = useState('')
     const [citydata, setCitydata] = useState({
         display_name: "",
         lat: "",
         lon: "",
     })
+    let errorHtml = <Error/>
+    if(errorMessage === ""){
+        errorHtml = <></>
+    }
     return (
         <Form id="cityForm">
             <Row>
@@ -30,13 +36,14 @@ function ExploreForm() {
 
                     <Button onClick={function(){
                         console.log(userinput)
-                         let response = axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_APT_KEY}&q=${userinput}&format=json`);
-                         
+                         let response = axios.get(`https://us1.locationiq.com/v1/search?key=${process.env.REACT_APP_LOCATION_APT_KEY}&q=${userinput}&format=json`)
 
                          response.then(function(res){
                              // console.log(res.data)
                              console.log(res.data[0])
                              setCitydata(res.data[0]);
+                         }).catch(function(error){
+                            setErrorMessage(error.message)
                          })
                      console.log(response,"........");
                     }}>Explore!</Button>
@@ -47,6 +54,7 @@ function ExploreForm() {
             <h1 className='info text coordinates' id='long'>Longitude: {citydata.lon}</h1>
             <h1 className='info text coordinates' id='lati'>Latitude: {citydata.lat}</h1>
             </div>
+            {errorHtml}
             <img id="Mapp"alt="City Map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_APT_KEY}&center=${citydata.lat},${citydata.lon}&zoom=13&format=jpg`}  />
             </Form>
     )
