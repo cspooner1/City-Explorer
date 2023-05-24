@@ -11,11 +11,18 @@ import {useState} from 'react';
 import Col from 'react-bootstrap/Col';
 import './App.css';
 import Error from './Error';
+import Weather from './Weather';
 
 function ExploreForm() {
     const [userinput, setUserInput] = useState("");
     const [image, setImage] = useState("");
-    const [errorMessage, setErrorMessage] = useState('')
+    const [errorMessage, setErrorMessage] = useState("");
+    const [weatherData, setweatherData] = useState([]);
+    let weatherHTML = weatherData.map(function(element){
+       return(
+        <h1 id='weather'>{element.description},{element.date}</h1>
+       )
+    })
     const [citydata, setCitydata] = useState({
         display_name: "",
         lat: "",
@@ -45,7 +52,18 @@ function ExploreForm() {
                          }).catch(function(error){
                             setErrorMessage(error.message)
                          })
-                     console.log(response,"........");
+
+                         let weatherResponse = axios.get(`http://localhost:3001/weather?searchQuery=${userinput}&lon=${citydata.lon}&lat=${citydata.lat}`)
+                         weatherResponse.then(function(res){
+                            weatherHTML = res.data
+                            setweatherData(res.data)
+                            console.log(res.data)
+                         })
+
+                         weatherResponse.catch(function(err){
+                            setErrorMessage(err.message)
+                        })                     
+                        console.log(weatherResponse,"........");
                     }}>Explore!</Button>
                 </Form.Group>
             </Row>
@@ -54,6 +72,7 @@ function ExploreForm() {
             <h1 className='info text coordinates' id='long'>Longitude: {citydata.lon}</h1>
             <h1 className='info text coordinates' id='lati'>Latitude: {citydata.lat}</h1>
             </div>
+           <Weather weatherData={weatherData}/>
             {errorHtml}
             <img id="Mapp"alt="City Map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_APT_KEY}&center=${citydata.lat},${citydata.lon}&zoom=13&format=jpg`}  />
             </Form>

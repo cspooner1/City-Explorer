@@ -100,3 +100,8 @@ button{
   text-overflow: ellipsis;
   -webkit-text-stroke: 1px rgb(255, 255, 255); /* width and color */
 }
+
+#weather {
+  font-size:medium;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+}

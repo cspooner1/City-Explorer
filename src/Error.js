@@ -14,7 +14,7 @@ import Col from 'react-bootstrap/Col';
 import './App.css';
 
 function Error() {
-    const [currentError, setcurrentError] = useState("Error: 400")
+    const [currentError, setcurrentError] = useState("Error")
 
     return (
         <h1>{currentError}</h1>
