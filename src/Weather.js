@@ -1,8 +1,8 @@
 import './App.css';
 function Weather(props) {
-    return props.weatherData.map((element) => {
-        return <h3 id='weather'>{element.date} {element.description}</h3>
-    })
+    return (<div className='apiTitle'>Weather{props.weatherData.map((element) => {
+         return <div><h3 id='weather' className='weatherData'>Date: {element.date} Description: {element.description}</h3></div>
+    })}</div>)
 }
 
 export default Weather;

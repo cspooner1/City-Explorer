@@ -12,12 +12,14 @@ import Col from 'react-bootstrap/Col';
 import './App.css';
 import Error from './Error';
 import Weather from './Weather';
+import Movies from './Movies';
 
 function ExploreForm() {
     const [userinput, setUserInput] = useState("");
     const [image, setImage] = useState("");
     const [errorMessage, setErrorMessage] = useState("");
     const [weatherData, setweatherData] = useState([]);
+    const [movieObject, setmovieObject] = useState([]);
     let weatherHTML = weatherData.map(function(element){
        return(
         <h1 id='weather'>{element.description},{element.date}</h1>
@@ -62,8 +64,12 @@ function ExploreForm() {
 
                          weatherResponse.catch(function(err){
                             setErrorMessage(err.message)
-                        })                     
-                        console.log(weatherResponse,"........");
+                        })              
+                        let movieResponse = axios.get(`http://localhost:3001/movies?${userinput}`)
+                        movieResponse.then(function(res){
+                            setmovieObject(res.data)
+                        })
+                        // console.log(weatherResponse,"........");
                     }}>Explore!</Button>
                 </Form.Group>
             </Row>
@@ -72,9 +78,10 @@ function ExploreForm() {
             <h1 className='info text coordinates' id='long'>Longitude: {citydata.lon}</h1>
             <h1 className='info text coordinates' id='lati'>Latitude: {citydata.lat}</h1>
             </div>
-           <Weather weatherData={weatherData}/>
-            {errorHtml}
+           {errorHtml}
             <img id="Mapp"alt="City Map" src={`https://maps.locationiq.com/v3/staticmap?key=${process.env.REACT_APP_LOCATION_APT_KEY}&center=${citydata.lat},${citydata.lon}&zoom=13&format=jpg`}  />
+            <Weather weatherData={weatherData}/>
+            <Movies  movieResponse={movieObject}/>
             </Form>
     )
 }

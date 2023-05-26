@@ -105,3 +105,26 @@ button{
   font-size:medium;
   font-family: Georgia, 'Times New Roman', Times, serif;
 }
+
+#movie {
+  font-size:medium;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  justify-content: space-evenly;
+}
+
+.Data{
+  border-style: solid;
+  border-color: white;
+}
+
+.apiTitle{
+  font-weight: bold;
+  font-family: Georgia, 'Times New Roman', Times, serif;
+  font-size:x-large;
+}
+
+.weatherData{
+  display: flex;
+  justify-content: center;
+  font-size: smaller;
+}
