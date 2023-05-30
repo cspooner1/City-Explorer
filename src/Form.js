@@ -65,7 +65,7 @@ function ExploreForm() {
                          weatherResponse.catch(function(err){
                             setErrorMessage(err.message)
                         })              
-                        let movieResponse = axios.get(`http://localhost:3001/movies?searchQuery${userinput}`)
+                        let movieResponse = axios.get(`http://localhost:3001/movies?searchQuery=${userinput}`)
                         movieResponse.then(function(res){
                             console.log(res.data)
                             setmovieObject(res.data)
