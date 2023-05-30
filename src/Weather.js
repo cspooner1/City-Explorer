@@ -1,7 +1,13 @@
 import './App.css';
+import {useState} from 'react'
+import WeatherDay from './WeatherDay.js';
+
+
+
 function Weather(props) {
+    const [weatherData, setweatherData] = useState([]);
     return (<div className='apiTitle'>Weather{props.weatherData.map((element) => {
-         return <div><h3 id='weather' className='weatherData'>Date: {element.date} Description: {element.description}</h3></div>
+         return <WeatherDay  date={element.date} description={element.description}/>
     })}</div>)
 }
 
