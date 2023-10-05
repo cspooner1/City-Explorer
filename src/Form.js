@@ -55,7 +55,7 @@ function ExploreForm() {
                             setErrorMessage(error.message)
                          })
 
-                         let weatherResponse = axios.get(`http://localhost:3001/weather?searchQuery=${userinput}&lon=${citydata.lon}&lat=${citydata.lat}`)
+                         let weatherResponse = axios.get(`https://city-explorer-api1.netlify.app/weather?searchQuery=${userinput}&lon=${citydata.lon}&lat=${citydata.lat}`)
                          weatherResponse.then(function(res){
                             weatherHTML = res.data
                             setweatherData(res.data)
@@ -65,7 +65,7 @@ function ExploreForm() {
                          weatherResponse.catch(function(err){
                             setErrorMessage(err.message)
                         })              
-                        let movieResponse = axios.get(`http://localhost:3001/movies?searchQuery=${userinput}`)
+                        let movieResponse = axios.get(`https://city-explorer-api1.netlify.app/movies?searchQuery=${userinput}`)
                         movieResponse.then(function(res){
                             console.log(res.data)
                             setmovieObject(res.data)
